@@ -1,4 +1,4 @@
-awindow.addEventListener('load', () => {
+window.addEventListener('load', () => {
   const currentUrl = window.location.href;
 
   if (currentUrl.includes('/admin/')) {
